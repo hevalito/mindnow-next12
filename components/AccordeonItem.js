@@ -3,11 +3,25 @@ import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
 const AccordeonItem = ({ blok }) => {
   return (
     <div className="accordeonItem" {...storyblokEditable(blok)}>
+        <img src={blok.picture.filename} alt={blok.picture.alt} />
         <h3>{blok.title}</h3>
         <p>{blok.introText}</p>
-        {blok.articles.map((nestedBlok) => (
-            <div>{nestedBlok.title}</div>
-        ))}
+        <ul>
+          {blok.articles.map((article) => {
+            return (
+              <li key={article.slug} className="relatedArticle">
+                <Link href={`articles/${article.slug}`}>
+                  <a className="articleLink">
+                    <img src={article.content.featuredImage.filename} className="articleFeaturedImage" alt={article.content.featuredImage.alt} />
+                    <h2 className="articleTitle">
+                      {article.content.title}
+                    </h2>
+                  </a>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
     </div>
   );
 };
