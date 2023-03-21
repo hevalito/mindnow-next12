@@ -30,7 +30,8 @@ export async function getStaticProps() {
   let slug = "home";
 
   let sbParams = {
-    version: "draft", // or 'published'
+    version: "draft",
+    resolve_relations: ["accordeonItem.articles", "uspSection.projects"],
   };
 
   const storyblokApi = getStoryblokApi();

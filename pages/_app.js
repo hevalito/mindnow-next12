@@ -5,10 +5,12 @@ import ContentHero from "../components/ContentHero";
 import ApproachAccordeon from "../components/ApproachAccordeon";
 import AccordeonTab from "../components/AccordeonTab";
 import AccordeonItem from "../components/AccordeonItem";
+import UspSection from "../components/UspSection";
 import Grid from "../components/Grid";
 import Page from "../components/Page";
 import Article from "../components/Article";
 import Teaser from "../components/Teaser";
+
 
 const components = {
     feature: Feature,
@@ -19,11 +21,12 @@ const components = {
     approachAccordeon: ApproachAccordeon,
     accordeonTab: AccordeonTab,
     accordeonItem: AccordeonItem,
-    article: Article
+    article: Article,
+    uspSection: UspSection
 };
 
 storyblokInit({
-    accessToken: process.env.sbAccessToken,
+    accessToken: "0oB00tz0KBA0yDcvWFZwvgtt",
     use: [apiPlugin],
     components,
 });

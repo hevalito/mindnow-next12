@@ -11,14 +11,14 @@ const AccordeonItem = ({ blok }) => {
         <ul>
           {blok.articles.map((article) => {
             return (
+              console.log(article.slug),
               <li key={article.slug} className="relatedArticle">
                 <Link href={`articles/${article.slug}`}>
                   <a className="articleLink">
-                    {article}
-                    {/* <img src={article.featuredImage.filename} className="articleFeaturedImage" alt={article.featuredImage.alt} />
+                    <img src={article.content.featuredImage.filename} className="articleFeaturedImage" alt={article.content.featuredImage.alt} />
                     <h2 className="articleTitle">
-                      {article.title}
-                    </h2> */}
+                      {article.content.title}
+                    </h2>
                   </a>
                 </Link>
               </li>
