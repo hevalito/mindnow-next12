@@ -5,7 +5,7 @@ const AccordeonItem = ({ blok }) => {
     <div className="accordeonItem" {...storyblokEditable(blok)}>
         <h3>{blok.title}</h3>
         <p>{blok.introText}</p>
-        {blok.columns.map((nestedBlok) => (
+        {blok.articles.map((nestedBlok) => (
             <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
         ))}
     </div>
