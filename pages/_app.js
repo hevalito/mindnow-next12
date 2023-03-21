@@ -7,6 +7,7 @@ import AccordeonTab from "../components/AccordeonTab";
 import AccordeonItem from "../components/AccordeonItem";
 import Grid from "../components/Grid";
 import Page from "../components/Page";
+import Article from "../components/Article";
 import Teaser from "../components/Teaser";
 
 const components = {
@@ -17,7 +18,8 @@ const components = {
     contentHero: ContentHero,
     approachAccordeon: ApproachAccordeon,
     accordeonTab: AccordeonTab,
-    accordeonItem: AccordeonItem
+    accordeonItem: AccordeonItem,
+    article: Article
 };
 
 storyblokInit({
