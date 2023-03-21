@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import { storyblokInit, apiPlugin } from "@storyblok/react";
 import Feature from "../components/Feature";
 import ContentHero from "../components/ContentHero";
+import ApproachAccordeon from "../components/ApproachAccordeon";
 import Grid from "../components/Grid";
 import Page from "../components/Page";
 import Teaser from "../components/Teaser";
@@ -11,7 +12,8 @@ const components = {
     grid: Grid,
     teaser: Teaser,
     page: Page,
-    contentHero: ContentHero
+    contentHero: ContentHero,
+    approachAccordeon: ApproachAccordeon
 };
 
 storyblokInit({
