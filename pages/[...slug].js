@@ -1,68 +1,69 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
-
-import {
-  useStoryblokState,
-  getStoryblokApi,
-  StoryblokComponent,
-} from "@storyblok/react";
+import { StoryblokComponent, useStoryblokState, getStoryblokApi } from "@storyblok/react";
 
 export default function Page({ story }) {
-  story = useStoryblokState(story);
+    story = useStoryblokState(story, {
+        resolveRelations: ["featured-recipes.recipes"],
+    });
 
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>{story ? story.name : "My Site"}</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <header>
-        <h1>{story ? story.name : "My Site"}</h1>
-      </header>
-
-      <StoryblokComponent blok={story.content} />
-    </div>
-  );
+    return ( <
+        div >
+        <
+        Head >
+        <
+        title > { story ? story.name : "My Site" } < /title> <
+        link rel = "icon"
+        href = "/favicon.ico" / >
+        <
+        /Head> <
+        header >
+        <
+        h1 className = "text-4xl" > { story ? story.name : "My Site" } < /h1> <
+        /header> <
+        StoryblokComponent blok = { story.content }
+        /> <
+        /div>
+    );
 }
-
 export async function getStaticProps({ params }) {
-  let slug = params.slug ? params.slug.join("/") : "home";
-
-  let sbParams = {
-    version: "draft", // or 'published'
-  };
-
-  const storyblokApi = getStoryblokApi();
-  let { data } = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
-
-  return {
-    props: {
-      story: data ? data.story : false,
-      key: data ? data.story.id : false,
-    },
-    revalidate: 3600,
-  };
+    // join the slug array used in Next.js catch-all routes
+    let slug = params.slug ? params.slug.join("/") : "home";
+    let sbParams = {
+        // change to `published` to load the published version
+        version: "draft", // or published
+        resolve_relations: ["featured-recipes.recipes"],
+    };
+    const storyblokApi = getStoryblokApi()
+    let { data } = await storyblokApi.get(`cdn/stories/${slug}`, sbParams)
+    return {
+        props: {
+            story: data ? data.story : false,
+            key: data ? data.story.id : false,
+        },
+        revalidate: 3600, // revalidate every hour
+    };
 }
-
 export async function getStaticPaths() {
-  const storyblokApi = getStoryblokApi();
-  let { data } = await storyblokApi.get("cdn/links/");
+    // get all links from Storyblok
 
-  let paths = [];
-  Object.keys(data.links).forEach((linkKey) => {
-    if (data.links[linkKey].is_folder || data.links[linkKey].slug === "home") {
-      return;
-    }
+    const storyblokApi = getStoryblokApi()
+    let { data } = await storyblokApi.get(`cdn/links/`)
 
-    const slug = data.links[linkKey].slug;
-    let splittedSlug = slug.split("/");
-
-    paths.push({ params: { slug: splittedSlug } });
-  });
-
-  return {
-    paths: paths,
-    fallback: false,
-  };
+    let paths = [];
+    // create a routes for every link
+    Object.keys(data.links).forEach((linkKey) => {
+        // do not create a route for folders or the home (index) page
+        if (data.links[linkKey].is_folder || data.links[linkKey].slug === "home") {
+            return;
+        }
+        // get array for slug because of catch all
+        const slug = data.links[linkKey].slug;
+        let splittedSlug = slug.split("/");
+        // cretes all the routes
+        paths.push({ params: { slug: splittedSlug } });
+    });
+    return {
+        paths: paths,
+        fallback: false,
+    };
 }

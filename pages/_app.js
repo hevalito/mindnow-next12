@@ -2,7 +2,7 @@ import "../styles/globals.css";
 import { storyblokInit, apiPlugin } from "@storyblok/react";
 import Feature from "../components/Feature";
 import ContentHero from "../components/ContentHero";
-import ApproachAccordeon from "../components/ApproachAccordeon";
+import TabbedAccordeon from "../components/TabbedAccordeon";
 import AccordeonTab from "../components/AccordeonTab";
 import AccordeonItem from "../components/AccordeonItem";
 import UspSection from "../components/UspSection";
@@ -18,7 +18,7 @@ const components = {
     teaser: Teaser,
     page: Page,
     contentHero: ContentHero,
-    approachAccordeon: ApproachAccordeon,
+    tabbedAccordeon: TabbedAccordeon,
     accordeonTab: AccordeonTab,
     accordeonItem: AccordeonItem,
     article: Article,
