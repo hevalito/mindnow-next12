@@ -3,6 +3,8 @@ import { storyblokInit, apiPlugin } from "@storyblok/react";
 import Feature from "../components/Feature";
 import ContentHero from "../components/ContentHero";
 import ApproachAccordeon from "../components/ApproachAccordeon";
+import AccordeonTab from "../components/AccordeonTab";
+import AccordeonItem from "../components/AccordeonItem";
 import Grid from "../components/Grid";
 import Page from "../components/Page";
 import Teaser from "../components/Teaser";
@@ -13,7 +15,9 @@ const components = {
     teaser: Teaser,
     page: Page,
     contentHero: ContentHero,
-    approachAccordeon: ApproachAccordeon
+    approachAccordeon: ApproachAccordeon,
+    accordeonTab: AccordeonTab,
+    accordeonItem: AccordeonItem
 };
 
 storyblokInit({
