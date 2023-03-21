@@ -14,10 +14,11 @@ const AccordeonItem = ({ blok }) => {
               <li key={article.slug} className="relatedArticle">
                 <Link href={`articles/${article.slug}`}>
                   <a className="articleLink">
-                    <img src={article.featuredImage.filename} className="articleFeaturedImage" alt={article.featuredImage.alt} />
+                    {article}
+                    {/* <img src={article.featuredImage.filename} className="articleFeaturedImage" alt={article.featuredImage.alt} />
                     <h2 className="articleTitle">
                       {article.title}
-                    </h2>
+                    </h2> */}
                   </a>
                 </Link>
               </li>
