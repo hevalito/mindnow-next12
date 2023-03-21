@@ -1,4 +1,6 @@
 import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
+import Link from "next/link";
+
 
 const AccordeonItem = ({ blok }) => {
   return (
